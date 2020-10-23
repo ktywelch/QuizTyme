@@ -169,54 +169,34 @@ const quizContainer = document.querySelector('#quiz');
 const resultsContainer = document.querySelector('#results');
 const submitButton = document.querySelector('#submit');
 const startButton = document.querySelector('#startQuiz');
-const ansForm = document.querySelector('#answers');
-const quesP = document.querySelector('#question');
+const questP = document.querySelector('#question');
+const ansRes = document.querySelector('#ansRes')
 
 const timeRem = document.querySelector('#timerem');
   
-var highscore = 0;
+var highscore = [];
 var currScore = 0;
 var numQuest = 5;
-var br = document.createElement("br");
+var p = document.createElement("p");
 let numQuests = Object.keys(myQuestions).length;
-
-/*function showResults(){ ... }
-
-function guess(id, guess) {
-  var button = document.getElementById(id);
-  button.onclick = function() {
-      guess(guess);
-      populate();
-  }
-}
-*/
 var questionIndex = 0;
 
 function startQuiz(){
-//e.preventDefault();
+//start timer
 startTimer();
-console.log(Object.keys(myQuestions).length);
-//for(let i =0;i < Object.keys(myQuestions).length;i++) {
-    if (t > 0){
-      buildQuestion(questionIndex);
-  } else {
-      alert("Out of Time")
-    }
- // }
+//hide the button
+startButton.style.display = "none";
+//ask the first question
+buildQuestion(questionIndex, currScore);
 }
 
-function buildQuestion(quest){
+function buildQuestion(quest,currScore){
   let fu = "";
   let question =  myQuestions[quest]["question"];
   let answers = myQuestions[quest]["answers"];
   let ans = myQuestions[quest]["ans"];
-  let exp = myQuestions[quest]["explanation"];
-  let q = document.createElement("p");
-  q.textContent = question;
-  quizContainer.appendChild(q);
-  //str = JSON.stringify(answers);
-  //console.log(str + Object.keys(answers).length);
-  //newD.setAttribute(onchange,"something")
+  let explain = myQuestions[quest]["explanation"];
+  questP.innerText = question;
   let newF = document.createElement("form");
   newF.setAttribute("id","ansForm");
   console.log(answers);
@@ -227,47 +207,82 @@ function buildQuestion(quest){
     newIn.id = fu;
     newIn.name = quest;
     newIn.value = key;
-    let newLa =  document.createElement("label");
-    newLa.for=fu;
-    newLa.textContent = value;
+    newIn.textContent = value;
+    let newLa = document.createElement("label");
+    newLa.setAttribute("for",fu);
+    newLa.innerText = value;
+    newLa.appendChild(newIn);
     newF.appendChild(newIn);
     newF.appendChild(newLa);
   }
     quizContainer.appendChild(newF);
     var ansForm=document.querySelector("#ansForm");
-    ans1 = document.querySelector('input[name="0"]:checked').value;
     ansForm.addEventListener("change", function(){
-    console.log(ans1);  
-    let formAnswer =  ansForm.value;
+   
+      var c;
+    for (c of ansForm.children) {
+     if (c.checked) {
+       let cAns = c.getAttribute("value")
+       console.log("correct ans " + ans + " my answer " + cAns) 
+       currScore = checkans(ans,cAns,currScore,explain);      
+     }
+    }
     
     })
   }
 
-    /*
-    checkans(ans,ansf) {
-      //console.log("changed");
+  
+    function checkans(ans,ansf,currScore,explain) {
+      if(ans == ansf){
+        //display correct in the div
+        //add to score
+        currScore++;
+        ansRes.innerText = "-----------\nCorrect!";
+        setTimeout(() => {nextQuestion(); }, 1000);
+      } else {
+        console.table(ansRes)
+        ansRes.innerText = "-----------\nIncorrect \n Correct answer is " + ans + "\n" + explain 
+        setTimeout(() => { nextQuestion(); }, 1500); 
+      }
+    }
+
+      function nextQuestion(){
+      let aForm = document.querySelector('#ansForm');
+      console.log(aForm); 
+      // Remove the form
+      aForm.remove();
+      // Clean up text from answer
+      ansRes.innerText = "";
       questionIndex++;
       if(questionIndex===Object.keys(myQuestions).length){
-        console.log("endgame");}
+        console.log("endgame");
+        highScores(currScore);
+        }
         else{
           buildQuestion(questionIndex);
         }
       }
-    */
-  
+    
+    
 
-
-
-  function checkans(ans,formvalue){
-    if (ans == formvalue){
-      return;
-      console.log("correct");
-    } else {
-      alert("wrong");
+  function highScores(score){
+    let highData = [], lastHigh=0;
+    console.log("here");
+    if (localStorage.getItem('highscore')){
+      highData=JSON.parse(localStorage.getItem('highscore'));
+      lastHigh = highData[0]["score"];
     }
-
-  }
-
+   
+    if (score > lastHigh) {  
+        var initals = prompt("Congratulation You are the new high scorer\nEnter your initials")
+        let date = new Date().format('m-d-Y h:i:s');
+        var newHS = {
+          date: date,
+          score: score,
+          initals: initals};
+          localStorage.setItem('highscore', JSON.stringify(newHS));
+        }
+      }
 
 // Timer allowing 15 seconds per question
 function startTimer(){
@@ -278,7 +293,7 @@ let a = setInterval(function() {
       timeRem.textContent = t;
       if(t === 0){clearInterval(a)}
        }, 1000);
-      }
+}
 
 
 

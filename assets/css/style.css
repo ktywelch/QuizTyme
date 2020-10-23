@@ -1,51 +1,30 @@
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
 
 /* setting up general elements to perseve style throughout website */
-body {
-    background-color: #d9dcd6;
+body{
+    background-color: cyan;
 }
 
-header {
-    padding: 20px;
-    font-family: 'Veranda', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color: #2a607c;
-    color: #ffffff;
+
+radio
+{
+    vertical-align:middle;
+    width:13px;
+    height:13px;
+    padding:0;
+    margin:0;
+    top:2px;
+    text-emphasis-color: blue;
 }
 
-h1 {
-    display: inline-block;
-    font-size: 48px;
+label{
+    text-emphasis: green;
+    background-color: cyan;
 }
+label:hover, label:active {
+    background:yellow;
+ }
 
-/* This is set to highlight a section to match the company logo */
 
-nav {
-    padding-top: 15px;
-    margin-right: 20px;
-    float: right;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 20px;
-    height: auto;
-    background-color: #e3f2fd;
-}
-
-ul {
-    list-style-type: none;
-}
-
-li {
-    display: inline-block;
-    margin-left: 25px;
-}
-
-a {
-    color: #ffffff;
-    text-decoration: none;
-}
 
 p {
     font-size: 16px;
