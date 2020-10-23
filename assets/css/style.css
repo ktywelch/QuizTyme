@@ -17,10 +17,11 @@ radio
 }
 
 label{
+    display: block;
     text-emphasis: green;
     background-color: cyan;
 }
-label:hover, label:active {
+label:acitve{
     background:yellow;
  }
 

@@ -187,10 +187,10 @@ startTimer();
 //hide the button
 startButton.style.display = "none";
 //ask the first question
-buildQuestion(questionIndex, currScore);
+buildQuestion(questionIndex);
 }
 
-function buildQuestion(quest,currScore){
+function buildQuestion(quest){
   let fu = "";
   let question =  myQuestions[quest]["question"];
   let answers = myQuestions[quest]["answers"];
@@ -199,7 +199,6 @@ function buildQuestion(quest,currScore){
   questP.innerText = question;
   let newF = document.createElement("form");
   newF.setAttribute("id","ansForm");
-  console.log(answers);
  for (let [key, value] of Object.entries(answers)) {
     let newIn = document.createElement("input");
     newIn.type = "radio";
@@ -214,6 +213,7 @@ function buildQuestion(quest,currScore){
     newLa.appendChild(newIn);
     newF.appendChild(newIn);
     newF.appendChild(newLa);
+   
   }
     quizContainer.appendChild(newF);
     var ansForm=document.querySelector("#ansForm");
@@ -224,7 +224,7 @@ function buildQuestion(quest,currScore){
      if (c.checked) {
        let cAns = c.getAttribute("value")
        console.log("correct ans " + ans + " my answer " + cAns) 
-       currScore = checkans(ans,cAns,currScore,explain);      
+       checkans(ans,cAns,explain);      
      }
     }
     
@@ -232,7 +232,7 @@ function buildQuestion(quest,currScore){
   }
 
   
-    function checkans(ans,ansf,currScore,explain) {
+    function checkans(ans,ansf,explain) {
       if(ans == ansf){
         //display correct in the div
         //add to score
@@ -255,8 +255,9 @@ function buildQuestion(quest,currScore){
       ansRes.innerText = "";
       questionIndex++;
       if(questionIndex===Object.keys(myQuestions).length){
+        aForm.remove();
         console.log("endgame");
-        highScores(currScore);
+        highScores();
         }
         else{
           buildQuestion(questionIndex);
@@ -265,24 +266,25 @@ function buildQuestion(quest,currScore){
     
     
 
-  function highScores(score){
-    let highData = [], lastHigh=0;
+  function highScores(){
+    let highData = [], lastHigh=0, newHS= new Object();
     console.log("here");
+    questP.innerText = "Your score is " + currScore;
     if (localStorage.getItem('highscore')){
       highData=JSON.parse(localStorage.getItem('highscore'));
       lastHigh = highData[0]["score"];
     }
    
-    if (score > lastHigh) {  
+    if (currScore > lastHigh) {  
         var initals = prompt("Congratulation You are the new high scorer\nEnter your initials")
-        let date = new Date().format('m-d-Y h:i:s');
-        var newHS = {
-          date: date,
-          score: score,
-          initals: initals};
+        let date = new Date().toLocaleDateString();
+        newHS.date =  date; 
+        newHS.score = currScore;
+        newHS.initals = initals;
           localStorage.setItem('highscore', JSON.stringify(newHS));
-        }
+        
       }
+    }
 
 // Timer allowing 15 seconds per question
 function startTimer(){
