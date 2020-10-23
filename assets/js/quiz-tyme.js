@@ -164,9 +164,8 @@ const highS = document.querySelector('#highScore');
 var highscore = [];
 var currScore = 0;
 var numQuest = 5;
-var p = document.createElement("p");
-let numQuests = Object.keys(myQuestions).length;
-var questionIndex = 0, t = 0;
+var numQuests = Object.keys(myQuestions).length;
+var questionIndex = 0, t = 0, a=0;
 
 function startQuiz(){
 //start timer
@@ -231,7 +230,8 @@ function buildQuestion(quest){
         setTimeout(() => {nextQuestion(); }, 1000);
       } else {
         console.table(ansRes)
-        ansRes.innerText = "-----------\nIncorrect \n Correct answer is " + ans + "\n" + explain 
+        ansRes.innerText = "-----------\nIncorrect \n Correct answer is " + ans + "\n" + explain + "\n Taking 5 seconds from clock"
+        t=t-5;
         setTimeout(() => { nextQuestion(); }, 1500); 
       }
     }
@@ -244,7 +244,7 @@ function buildQuestion(quest){
       // Clean up text from answer
       ansRes.innerText = "";
       questionIndex++;
-      if(questionIndex===Object.keys(myQuestions).length && t < 0){
+      if(questionIndex === Object.keys(myQuestions).length || t < 0){
         aForm.remove();
         console.log("endgame");
         highScores();
@@ -258,41 +258,49 @@ function buildQuestion(quest){
 
   function highScores(){
     let highData = [], lastHigh=0, newHS= new Object();
-    console.log("here");
-    questP.innerText = "Your score is " + currScore;
+    stopTimer();
     if (localStorage.getItem('highscore')){
       highData=JSON.parse(localStorage.getItem('highscore'));
       lastHigh = highData["score"];
     }
    
-    if (currScore > lastHigh) {  
+    if (currScore >= lastHigh) {  
         var initals = prompt("Congratulation You are the new high scorer\nEnter your initials")
         let date = new Date().toLocaleDateString();
         newHS.date =  date; 
         newHS.score = currScore;
         newHS.initals = initals;
           localStorage.setItem('highscore', JSON.stringify(newHS));
-        
+        getHighScore();  
+        questP.setAttribute("class","text-success");
+      } else {
+        questP.setAttribute("class","text-danger");
       }
+      questP.setAttribute("class","text-center")
+      questP.innerText = "Your score  " + currScore + "\n Completed in " + t + " seconds";
+
     }
 
 // Timer allowing 15 seconds per question
 function startTimer(){
   //setting timer on the quiz
 t = Object.keys(myQuestions).length * 15;
-let a = setInterval(function() { 
+a = setInterval(function() { 
       t--;
       timeRem.textContent = t;
       if(t === 0){clearInterval(a)}
        }, 1000);
 }
 
+function stopTimer() {
+  clearInterval(a);
+}
 function getHighScore(){
   //Get the High Score for the start
   let highData = [];
   if (localStorage.getItem('highscore')){
     highData=JSON.parse(localStorage.getItem('highscore'));
-    highS.innerText=highData["initals"] + " score of " + highData["score"] + " on " + highData["date"];
+    highS.innerText=" " + highData["initals"] + " score of " + highData["score"] + " on " + highData["date"];
 }
 }
 
