@@ -2,122 +2,27 @@
 /* setting up general elements to perseve style throughout website */
 body{
     background-color: cyan;
+    font-family: 'Veranda','Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-
-
-radio
-{
-    vertical-align:middle;
-    width:13px;
-    height:13px;
-    padding:0;
-    margin:0;
-    top:2px;
-    text-emphasis-color: blue;
-}
-
-label{
-    display: block;
-    text-emphasis: green;
-    background-color: cyan;
-}
-label:acitve{
-    background:yellow;
- }
-
-
 
 p {
     font-size: 16px;
 }
-
-/* only used once style is id */
-#team-pic {
-    height: 800px;
-    width: 100%;
-    margin-bottom: 25px;
-    background-image: url("../images/digital-marketing-meeting.jpg");
-    background-size: cover;
-    background-position: center;
+/* needed these to get my radio buttons to line up */
+input{
+    display:inline;
+    margin-left: 5px;
+    margin-bottom: -20px;
 }
-
-/* Main section attributes
- - float styles
- - main content style 
- - article style attributes 
-*/
-.float-left {
-    float: left;
-    margin-right: 25px;
-}
-
-.float-right {
-    float: right;
-    margin-left: 25px;
-}
-
-/* used once so set as an id */
-#content {
-    width: 75%;
-    display: inline-block;
+label {
+    display:inline;
     margin-left: 20px;
-}
-
-/* combined settins for all articles in main */
-.main-article-properties {
-    margin-bottom: 20px;
-    padding: 50px;
-    height: 300px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: #0072bb;
-    color: #ffffff;
-}
-
-.main-article-properties img {
-    max-height: 200px;   
-}
-
-.main-article-properties  h2 {
-    margin-bottom: 20px;
-    font-size: 36px;
-}
-
-/* benefits section attributes */
-.benefits {
-    margin-right: 20px;
-    padding: 20px;
+    padding: 2px;
     clear: both;
     float: right;
-    width: 20%;
+    width: 90%;
     height: 100%;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: #2589bd;
+    
 }
 
-.benefits article {
-    margin-bottom: 32px;
-    color: #ffffff;
-}
 
-.benefits article h3 {
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.benefits article img {
-    display: block;
-    margin: 10px auto;
-    max-width: 150px;
-}
-/* Changed to an element from class & Hide the footer by setting visibility to hidden as in the png **/
-footer {
-    visibility : hidden;
-    padding: 30px;
-    clear: both;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-align: center;
-}
-
-footer h2 {
-    font-size: 20px;
-}

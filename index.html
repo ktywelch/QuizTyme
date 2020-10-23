@@ -12,11 +12,12 @@
 <body>
         <!-- Start Nav -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <span><a id="HighScore" class="nav-link" href="./Assets/html/highscore.html">High Score</a></span>
+            <span><a>High Score: </a></span>
+            <span><a id="highScore"></a></span>
           <!-- Making the button toggler to be uses as window is collapsed -->
           <div class=" ml-auto justify-content-end">
             <span><a>Time Remaining: </a></span>
-            <span><a id="timerem">100</a></span>
+            <span><a id="timerem"></a></span>
         </div>
         </nav>
 
@@ -31,12 +32,13 @@
             <p id="ansRes"></p> 
             </div>
         </div>
-
-        <button type="submit" class="btn btn-primary" id="startQuiz">Click to Start the Quiz</button>
-        <div id="results"></div>
+        <div class="text-right"></div> 
+        <button type="submit" class="btn btn-primary text-left" id="startQuiz">Click to Start the Quiz</button>
+        </div>
         
 
     <script src="./assets/js/quiz-tyme.js"></script>    
+   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script>

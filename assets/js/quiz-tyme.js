@@ -14,8 +14,8 @@ const myQuestions =  [
     { 
     question: 'Choose the correct JavaScript syntax to change the content of the following HTML code.',
     answers: {
-      a: 'document.getElement("geek").innerHTML="I am a Geek"',
-      b: 'document.getElementById("geek").innerHTML="I am a Geek"',
+      a: 'document.getElement("geek").innerText=m a Geek"',
+      b: '" umenet.ge" + tElementById("gee +k" ") " +.innerHTML="I am a Geek"',
       c: 'document.getId(“geek”)=”I am a Geek”',
       d: 'document.getElementById(“geek”).innerHTML=I am a Geek'
       },
@@ -56,16 +56,14 @@ const myQuestions =  [
     { 
     question: `Predict the output of the following JavaScript code.
     filter_none
-    
     edit
-    
     play_arrow
-    
     brightness_4
     <script type="text/javascript"> 
     a = 8 + "8"; 
     document.write(a); 
-    </script>`,
+    </script>
+    ----------------`,
     answers: {
        a: '16',
        b: 'Compilation Error',
@@ -77,19 +75,16 @@ const myQuestions =  [
     },
     { 
     question: `Predict the output of the following JavaScript code.
-    
     filter_none
-    
     edit
-    
     play_arrow
-    
     brightness_4
     <script type="text/javascript"> 
     var a="ThisThatThese"; 
     var x=a.lastIndexOf("T"); 
     document.write(x); 
-    </script>`, 
+    </script>
+    ----------------`, 
     answers: {
         a: '8',
         b: '0',
@@ -113,45 +108,38 @@ const myQuestions =  [
     { 
     question: `Predict the output of the following JavaScript code.
     filter_none
-    
     edit
-    
     play_arrow
-    
     brightness_4
-    <script type="text/javascript" language="javascript"> 
-      
-    var a = "GeeksforGeeks"; 
+
+    <script type="text/javascript" language="javascript">   
+    var a = "Testing is fun"; 
     var result = a.substring(4, 5); 
-    document.write(result); 
-      
-    </script>`, 
+    document.write(result);       
+    </script>
+    ------------------`, 
     answers: {
-      a: 'sf',
-      b: 'ks',
-      c: 's',
-      d: 'k'
+      a: 'ng',
+      b: 'in',
+      c: 'i',
+      d: 'n'
       },
     ans: 'c',
-    explanation: 'The substring command selects the substring starting from 4 to 5, excluding the 5th index. The indexing starts from 0. So, the output here is just “s” rather than sf.'
+    explanation: 'The substring command selects the substring starting from 4 to 5, excluding the 5th index. The indexing starts from 0. So, the output here is just “i” rather than "in".'
     },
     { 
     question: `Predict the output of the following JavaScript code.
     filter_none
-    
     edit
-    
     play_arrow
-    
     brightness_4
     <script type="text/javascript" language="javascript"> 
-      
     var x=5; 
     var y=6; 
     var res=eval("x*y"); 
-    document.write(res); 
-      
-    </script>`, 
+    document.write(res);     
+    </script>
+    ------------------`, 
     answers: {
       a: '“30”',
       b: '30',
@@ -171,19 +159,20 @@ const submitButton = document.querySelector('#submit');
 const startButton = document.querySelector('#startQuiz');
 const questP = document.querySelector('#question');
 const ansRes = document.querySelector('#ansRes')
-
 const timeRem = document.querySelector('#timerem');
-  
+const highS = document.querySelector('#highScore');
 var highscore = [];
 var currScore = 0;
 var numQuest = 5;
 var p = document.createElement("p");
 let numQuests = Object.keys(myQuestions).length;
-var questionIndex = 0;
+var questionIndex = 0, t = 0;
 
 function startQuiz(){
 //start timer
 startTimer();
+//If the highscore is there add that too
+getHighScore();
 //hide the button
 startButton.style.display = "none";
 //ask the first question
@@ -199,6 +188,7 @@ function buildQuestion(quest){
   questP.innerText = question;
   let newF = document.createElement("form");
   newF.setAttribute("id","ansForm");
+  newF.setAttribute("class","btn-group-vertical")
  for (let [key, value] of Object.entries(answers)) {
     let newIn = document.createElement("input");
     newIn.type = "radio";
@@ -254,7 +244,7 @@ function buildQuestion(quest){
       // Clean up text from answer
       ansRes.innerText = "";
       questionIndex++;
-      if(questionIndex===Object.keys(myQuestions).length){
+      if(questionIndex===Object.keys(myQuestions).length && t < 0){
         aForm.remove();
         console.log("endgame");
         highScores();
@@ -272,7 +262,7 @@ function buildQuestion(quest){
     questP.innerText = "Your score is " + currScore;
     if (localStorage.getItem('highscore')){
       highData=JSON.parse(localStorage.getItem('highscore'));
-      lastHigh = highData[0]["score"];
+      lastHigh = highData["score"];
     }
    
     if (currScore > lastHigh) {  
@@ -297,8 +287,13 @@ let a = setInterval(function() {
        }, 1000);
 }
 
-
-
-   
+function getHighScore(){
+  //Get the High Score for the start
+  let highData = [];
+  if (localStorage.getItem('highscore')){
+    highData=JSON.parse(localStorage.getItem('highscore'));
+    highS.innerText=highData["initals"] + " score of " + highData["score"] + " on " + highData["date"];
+}
+}
 
 startButton.addEventListener("click",startQuiz) 
