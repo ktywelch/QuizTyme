@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This is a quiz on JavaScript written in JS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+</head>
+
+<body>
+        <!-- Start Nav -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <span><a id="HighScore" class="nav-link" href="./Assets/html/highscore.html">High Score</a></span>
+          <!-- Making the button toggler to be uses as window is collapsed -->
+          <div class=" ml-auto justify-content-end">
+            <span><a>Time Remaining: </a></span>
+            <span><a id="timerem">100</a></span>
+        </div>
+        </nav>
+
+        <div class="container-fluid" id="quiz">
+           
+    
+        </div>
+
+        <div class="container-fluid">
+            <div id="baseCont" class="d-flex p-2 normal">
+            <p id="ansRes"></p> 
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="startQuiz">Click to Start the Quiz</button>
+        <div id="results"></div>
+        
+
+    <script src="./assets/js/quiz-tyme.js"></script>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JavaScript CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+ 
+
+</body>
+
+</html>
