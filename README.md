@@ -26,23 +26,13 @@ the code relies on bootstrap style sheet and assoicated java scripts.
 ## User Guide
 Behavior to meet requirements:
 
-User click the start button to 
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and score
+User click the start button to start a timer starts and  user presented with a question after answer selected.
+
+User is presented with another question if answered a question incorrectly 5 seconds is subtracted from the clock
+When all questions are answered or the timer reaches the game is over if you are a high scorer you can save my initials and score.
 
 The application
 ![quiz demo](./assets/images/out.gif)
-
-
-
-
 
 
 ## credits

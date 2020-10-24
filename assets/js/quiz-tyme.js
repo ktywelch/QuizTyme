@@ -258,6 +258,7 @@ function buildQuestion(quest){
 function highScores(){
     let highData = [], lastHigh=0, newHS= new Object();
     stopTimer();
+
     // Pulls out last high score data
     if (localStorage.getItem('highscore')){
       highData=JSON.parse(localStorage.getItem('highscore'));
@@ -271,7 +272,9 @@ function highScores(){
         newHS.date =  date; 
         newHS.score = currScore;
         newHS.initals = initals;
-        localStorage.setItem('highscore', JSON.stringify(newHS));
+        if (highData){
+          highData.unshift(newHS);
+        }
         getHighScore();  
       } 
       questP.setAttribute("class","text-center")
