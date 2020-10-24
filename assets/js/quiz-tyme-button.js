@@ -187,7 +187,7 @@ function buildQuestion(quest){
   let explain = myQuestions[quest]["explanation"];
   questP.innerText = question;
   //
-  let newF = document.createElement("form");
+  let newF = document.createElement("div");
   newF.setAttribute("id","ansForm");
   newF.setAttribute("class","btn-group-vertical")
  for (let [key, value] of Object.entries(answers)) {

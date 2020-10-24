@@ -1,26 +1,32 @@
-# 04 Web APIs: Code Quiz
+# Introduction
+The assignment for homework2 is to create a web application tha utilizes the bootstrap 4 stylesheets to create responsive design ensures that web applications render well on a variety of devices and window or screen sizes.
 
-## Your Task
-
-As you proceed in your journey to becoming a full-stack web developer, it’s likely that you’ll be asked to complete a coding assessment, perhaps as part of an interview process. A typical coding assessment is a combination of multiple-choice questions and interactive coding challenges. 
-
-To help you become familiar with these tests and give you a chance to apply the skills from this module, this week’s homework invites you to build a timed coding quiz with multiple-choice questions. This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean, polished, and responsive user interface. This week’s coursework will teach you all the skills you need to succeed in this assignment.
-
-
-## User Story
-
-```
-AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
-```
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [User Guide](#user-guide)
+* [Credits](#credits)
 
 
-## Acceptance Criteria
+## General info
+This object of this assignment is to generate a javascript quiz that stores high scores
+so that the user can gauge progress compared to peers.
 
-```
-GIVEN I am taking a code quiz
-WHEN I click the start button
+	
+## Technologies
+Project is created with:
+* Bootstrap version: 4.4.1
+* Node JS version: v12.18.4
+	
+## Setup
+To run this project, install is a simple download and extraction of the site and access to the internet is required 
+the code relies on bootstrap style sheet and assoicated java scripts.
+
+## User Guide
+Behavior to meet requirements:
+
+User click the start button to 
 THEN a timer starts and I am presented with a question
 WHEN I answer a question
 THEN I am presented with another question
@@ -30,63 +36,28 @@ WHEN all questions are answered or the timer reaches 0
 THEN the game is over
 WHEN the game is over
 THEN I can save my initials and score
-```
+
+The application
+![quiz demo](./assets/images/out.gif)
 
 
-## Mock-Up
-
-The following animation demonstrates the application functionality:
-
-![code quiz](./Assets/04-web-apis-homework-demo.gif)
 
 
-## Grading Requirements
-
-This homework is graded based on the following criteria: 
-
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the above acceptance criteria.
-
-### Deployment: 32%
-
-* Application deployed at live URL.
-
-* Application loads with no errors.
-
-* Application GitHub URL submitted.
-
-* GitHub repository that contains application code.
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate.
-
-* Application user interface style is clean and polished.
-
-* Application resembles the mock-up functionality provided in the homework instructions.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality README file with description, screenshot, and link to deployed application.
 
 
-## Review
+## credits
+Much of the code used in this project was copied from the bootstrap 4 samples and W3C 
+sample documents. Adjustments were made to make the code work.
 
-You are required to submit BOTH of the following for review:
+Peer review by study group: Lucah, Clarence and Jeff
 
-* The URL of the functional, deployed application.
+Code Validated by https://validator.w3.org/
 
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
 
-- - -
-© 2020 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
-# QuizTyme
+
+
+
+
+
+
+
