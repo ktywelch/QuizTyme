@@ -187,40 +187,34 @@ function buildQuestion(quest){
   let explain = myQuestions[quest]["explanation"];
   questP.innerText = question;
   //
-  let newF = document.createElement("div");
+  let newF = document.createElement("form");
   newF.setAttribute("id","ansForm");
-  newF.setAttribute("class","btn-group-vertical")
+  newF.setAttribute("class","btn-group")
  for (let [key, value] of Object.entries(answers)) {
-    let newIn = document.createElement("input");
-    newIn.type = "radio";
+    let newIn = document.createElement("button");
     fu="option-" + key; 
-    newIn.id = fu;
-    newIn.name = quest;
-    newIn.value = key;
+    newIn.id = key;
+    newIn.name = fu;
+    newIn.value = value;
     newIn.textContent = value;
-    let newLa = document.createElement("label");
-    newLa.setAttribute("for",fu);
-    newLa.innerText = value;
-    newLa.appendChild(newIn);
     newF.appendChild(newIn);
-    newF.appendChild(newLa);
-   
-  }
+ }
     quizContainer.appendChild(newF);
     var ansForm=document.querySelector("#ansForm");
     // add event listener for the form created
-    ansForm.addEventListener("change", function(){
-    // c finds which radio button is checked  
-    var c;
-    for (c of ansForm.children) {
-     if (c.checked) {
-       let cAns = c.getAttribute("value") 
-       checkans(ans,cAns,explain);      
-     }
+
+    ansForm.addEventListener('click', (event) => {
+      const isButton = event.target.nodeName === 'BUTTON';
+      event.preventDefault();
+      cAns = event.target.id;
+      console.log (cAns);
+      checkans(ans,cAns,explain);
+      console.dir(event.target.id);
+    })
     }
     
-    })
-  }
+    
+  
 
   
     function checkans(ans,ansf,explain) {

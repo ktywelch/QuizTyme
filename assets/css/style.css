@@ -1,7 +1,7 @@
 
 /* setting up general elements to perseve style throughout website */
 body{
-    background-color: cyan;
+    background-color: plum;
     font-family: 'Veranda','Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -10,9 +10,12 @@ p {
 }
 /* needed these to get my radio buttons to line up */
 input{
-    display:inline;
+    display:inline-block;
     margin-left: 5px;
     margin-bottom: -20px;
+}
+card {
+    background-color: rgb(230, 175, 230);
 }
 label {
     display:inline;
@@ -21,8 +24,40 @@ label {
     clear: both;
     float: right;
     width: 100%;
-    height: 100%;
-    
+    height: 100%;  
 }
+
+button {
+    display: inline-block;
+    font-family: sans-serif;
+    background-color: purple;
+    border-radius: 5px;
+    border: none;
+    color: #eeeeee;
+    text-align: center;
+    font-size: 15px;
+    padding: 20px;
+    width: 300px;
+    margin: 20px;
+  }
+
+  tr{
+  font-family: sans-serif;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+  color: black;
+  text-align: center;
+  align-content: center;
+  font-size: 15px;
+  width: max-content;
+  background-color: rgb(230, 175, 230)
+  }
+
+  p{
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 15px;  
+  }
 
 
