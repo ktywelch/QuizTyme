@@ -29,17 +29,17 @@ Behavior to meet requirements:
 User click the start button to start a timer starts and  user presented with a question after answer selected.
 
 User is presented with another question if answered a question incorrectly 5 seconds is subtracted from the clock
-When all questions are answered or the timer reaches the game is over if you are a high scorer you can save my initials and score.
+When all questions are answered or the timer reaches the game is over scores are stored in the local storage of the browser. At the end of the quiz there a table with the score entries is created that can be cleared.
 
 The application
 ![quiz demo](./assets/images/newQuiz.gif)
 
 
 ## credits
-Much of the code used in this project was copied from the bootstrap 4 samples and W3C 
-sample documents. Adjustments were made to make the code work.
+The majaority of code used was developed by review the class materials from the UCB boot camp and looking at other examples on stakoverflow and looking at methods in eloquent java. Used the fonts and items from the bootstrap 4 samples sample documents. 
 
-Peer review by study group: Lucah, Clarence and Jeff
+Peer review by study group: Lucah
+Help from TAs: Clarence & Jeff when using js to create the forms. 
 
 Code Validated by https://validator.w3.org/
 
