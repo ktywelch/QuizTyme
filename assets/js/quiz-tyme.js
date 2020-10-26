@@ -22,7 +22,7 @@ const myQuestions =  [
     ans: 'd',
     explanation: 'The correct syntax to access the element is document.getElementById("peek"). Here we want to access the content written under that id, so we used .innerHTML to specify that and finally we replaced the content with whatever is written inside the quotes.'
     },
-/*    { 
+ /*   { 
     question: 'Which of the following is the correct syntax to display "Quiz in Progress" in an alert box using JavaScript?',
     answers: {
        a: 'alertbox("Quiz in Progress")',
@@ -148,11 +148,11 @@ const myQuestions =  [
       },
     ans: 'b',
     explanation: 'eval command will evaluate the operation. Here it is 5*6=30.'
-    }*/
+    } */
   ]
 
 
-//=========
+//=== Setting up the common variables
 const quizContainer = document.querySelector('#quiz');
 const resultsContainer = document.querySelector('#results');
 const submitButton = document.querySelector('#submit');
@@ -163,10 +163,8 @@ const timeRem = document.querySelector('#timerem');
 const highS = document.querySelector('#highScore');
 var highscore = [], highData =[];
 var currScore = 0,lastHigh = 0;
-var numQuest = 5;
-var numQuests = Object.keys(myQuestions).length;
 var questionIndex = 0, t = 0, a=0;
-
+// This is where the quiz starts
 function startQuiz(){
 //start timer
 startTimer();
@@ -178,7 +176,7 @@ startButton.style.display = "none";
 buildQuestion(questionIndex);
 }
 
-//this function builds a form with all the elements
+//this function builds a form that builds the questions and starts listeners
 function buildQuestion(quest){
   let fu = "";
   let question =  myQuestions[quest]["question"];
@@ -221,7 +219,7 @@ function buildQuestion(quest){
     })
   }
 
-  
+  //Checks the answers if correct adds to score - incorrect subtracts 5 from timer and gives correct answet
     function checkans(ans,ansf,explain) {
       if(ans == ansf){
         //add to score
@@ -235,7 +233,7 @@ function buildQuestion(quest){
         setTimeout(() => { nextQuestion(); }, 1500); 
       }
     }
-
+  // This one increases the question index and calls the buildquestion so the next question is asked
       function nextQuestion(){
       let aForm = document.querySelector('#ansForm'); 
       // Remove the form
@@ -251,7 +249,7 @@ function buildQuestion(quest){
           buildQuestion(questionIndex);
         }
       }
- 
+ //This is called when the quiz over and populates the localstorage with the scores and 
 function highScores(){
     newHS=new Object(), initials ="",state="";
     var date = new Date().toLocaleDateString();
@@ -260,11 +258,11 @@ function highScores(){
     if (highData === undefined || highData.length == 0) {
        initals = prompt("First run \nEnter your initials");
        state="new";
-      } else if (lastHigh >= currScore){
-      initals = prompt("Sorry not a new high scorer\nEnter your initials");
+      } else if (lastHigh > currScore){
+      initals = prompt("Sorry not a new high score\nEnter your initials");
       state="normal";
       } else {
-        initals = prompt("Congratulation You are the new high scorer\nEnter your initials")
+        initals = prompt("Congratulation you have a new high score\nPlease enter your initials")
         state="high";
        }
        setScoreObj(initals,state);
@@ -275,10 +273,9 @@ function highScores(){
        let newF = document.createElement("div");
        newF.setAttribute("class","card border border-danger align-items-center");
          
-      data=JSON.parse(localStorage.getItem('highscore'));   
+      data=JSON.parse(localStorage.getItem('highscore')); 
+      // creating & populating a table of the current scores  
       var tbl = document.createElement("table");
-      
-      // creating all cells
       for (var i = 0; i < data.length; i++) {
           var row = document.createElement("tr");
           row.setAttribute = ("class","text-center ")
@@ -286,26 +283,26 @@ function highScores(){
           var cellText = document.createTextNode(data[i]["initals"]+ ": " +data[i]["score"]);
           cell.appendChild(cellText);
           row.appendChild(cell);
-           // add the row to the end of the table body
           tbl.appendChild(row);
-        //----------
       }
       newF.appendChild(tbl);
-       
+      
+      //buttons to clear the old scores and start quiz again
        let but1 = document.createElement("button");
-       but1.setAttribute("onclick","localStorage.clear()");
-       but1.innerText ="Clear Scores";
+       but1.setAttribute("onclick",'localStorage.clear();window.location.reload()');
+       but1.innerText ="Clear Scores \nStart New Quiz";
        newF.appendChild(but1);
        let but2 = document.createElement("button");
        but2.setAttribute("onclick","window.location.reload()");
-       but2.innerText ="Restart Quiz";
+       but2.innerText ="Start Quiz";
        newF.appendChild(but2);
        quizContainer.appendChild(newF);
-
        data=JSON.parse(localStorage.getItem('highscore'));
-       par=document.querySelector("#here");
+       
       }
+    
 
+// This array will store the object in the array where the first element will always be the latest high score
 function setScoreObj(initals,state){
   var details={}, wth=[];
   var date = new Date().toLocaleDateString();

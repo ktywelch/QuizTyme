@@ -32,7 +32,7 @@ User is presented with another question if answered a question incorrectly 5 sec
 When all questions are answered or the timer reaches the game is over if you are a high scorer you can save my initials and score.
 
 The application
-![quiz demo](./assets/images/out.gif)
+![quiz demo](./assets/images/newQuiz.gif)
 
 
 ## credits

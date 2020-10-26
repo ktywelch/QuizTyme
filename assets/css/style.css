@@ -5,18 +5,21 @@ body{
     font-family: 'Veranda','Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-p {
-    font-size: 16px;
-}
 /* needed these to get my radio buttons to line up */
+nav{
+    background-color: purple; 
+    color: #eeeeee;   
+}
+
 input{
     display:inline-block;
     margin-left: 5px;
     margin-bottom: -20px;
 }
-card {
-    background-color: rgb(230, 175, 230);
+.card {
+    background-color: plum;
 }
+
 label {
     display:inline;
     margin-left: 20px;
@@ -51,8 +54,10 @@ button {
   align-content: center;
   font-size: 15px;
   width: max-content;
-  background-color: rgb(230, 175, 230)
+  background-color:plum
   }
+
+  
 
   p{
     font-family: sans-serif;
