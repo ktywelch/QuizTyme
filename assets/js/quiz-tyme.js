@@ -1,4 +1,4 @@
-//create arrays one for questions - one for scores
+///create arrays one for questions - one for scores
 const myQuestions =  [
   {
    question: 'What is the HTML tag under which one can write the JavaScript code?',
@@ -22,7 +22,7 @@ const myQuestions =  [
     ans: 'd',
     explanation: 'The correct syntax to access the element is document.getElementById("peek"). Here we want to access the content written under that id, so we used .innerHTML to specify that and finally we replaced the content with whatever is written inside the quotes.'
     },
- /*   { 
+   { 
     question: 'Which of the following is the correct syntax to display "Quiz in Progress" in an alert box using JavaScript?',
     answers: {
        a: 'alertbox("Quiz in Progress")',
@@ -148,7 +148,7 @@ const myQuestions =  [
       },
     ans: 'b',
     explanation: 'eval command will evaluate the operation. Here it is 5*6=30.'
-    } */
+    } 
   ]
 
 
@@ -286,19 +286,22 @@ function highScores(){
           tbl.appendChild(row);
       }
       newF.appendChild(tbl);
+      quizContainer.appendChild(newF);
       
+      let newJ = document.createElement("div");
+      newJ.setAttribute("class","d-flex justify-content-center")
       //buttons to clear the old scores and start quiz again
        let but1 = document.createElement("button");
+       but1.setAttribute("class","n-button")
        but1.setAttribute("onclick",'localStorage.clear();window.location.reload()');
        but1.innerText ="Clear Scores \nStart New Quiz";
-       newF.appendChild(but1);
+       newJ.appendChild(but1);
        let but2 = document.createElement("button");
+       but2.setAttribute("class","n-button")
        but2.setAttribute("onclick","window.location.reload()");
-       but2.innerText ="Start Quiz";
-       newF.appendChild(but2);
-       quizContainer.appendChild(newF);
-       data=JSON.parse(localStorage.getItem('highscore'));
-       
+       but2.innerText ="Back to Start";
+       newJ.appendChild(but2);
+       quizContainer.appendChild(newJ);
       }
     
 
@@ -311,9 +314,8 @@ function setScoreObj(initals,state){
   details["score"] = currScore;
   details["initals"] = initals;
   wth.push(details);
-  console.log(JSON.stringify(wth));
+
   if (state === "new"){
-    console.log(details)
     localStorage.setItem('highscore', JSON.stringify(wth));
   } else if (state == 'high'){
     //if new high going to use unshift to keep as first value
@@ -330,10 +332,10 @@ function setScoreObj(initals,state){
 }
 
 
-// Timer allowing 15 seconds per question
+// Timer allowing 12 seconds per question
 function startTimer(){
   //setting timer on the quiz
-t = Object.keys(myQuestions).length * 15;
+t = Object.keys(myQuestions).length * 12;
 a = setInterval(function() { 
       t--;
       timeRem.textContent = t;
@@ -345,6 +347,7 @@ function stopTimer() {
   clearInterval(a);
 }
 
+//function to get the highscore and put it on the nave bar
 function getHighScore(){
   //Get the High Score for the start
   if (localStorage.getItem('highscore')){
@@ -355,12 +358,5 @@ function getHighScore(){
 }
 }
 
-function sleep(milliseconds) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
-}
 
 startButton.addEventListener("click",startQuiz) 
