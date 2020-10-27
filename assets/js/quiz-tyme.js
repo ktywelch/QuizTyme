@@ -293,7 +293,8 @@ function highScores(){
       //buttons to clear the old scores and start quiz again
        let but1 = document.createElement("button");
        but1.setAttribute("class","n-button")
-       but1.setAttribute("onclick",'localStorage.clear();window.location.reload()');
+       but1.setAttribute("onclick","localStorage.clear();window.location.reload();"
+       )
        but1.innerText ="Clear Scores \nStart New Quiz";
        newJ.appendChild(but1);
        let but2 = document.createElement("button");
