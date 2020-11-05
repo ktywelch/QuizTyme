@@ -357,6 +357,7 @@ function getHighScore(){
     //because of how the data is stored the high score will always be the first element
     highS.textContent = " " + highData[0]["initals"] + " score of " + lastHigh;
 }
+}
 
 
 
